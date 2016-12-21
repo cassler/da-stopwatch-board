@@ -52,14 +52,18 @@ export default class Stopwatch extends Component {
     var seconds = (this.state.elapsedTime / 1000).toFixed(2);
     return (
       <div className="stopwatch" >
-        <h2>Stopwatch</h2>
-        <div className="stopwatch-time"> {seconds} </div>
-        { this.state.running ?
-          <button onClick={this.onStop}>Stop</button>
-          :
-          <button onClick={this.onStart}>Start</button>
-        }
-        <button onClick={this.onReset}>Reset</button>
+      <div className="stopwatch-time"><div>{seconds}</div></div>
+        
+        
+        <div className="stopwatch-buttons">
+          <h2>Stopwatch</h2>
+          { this.state.running ?
+            <button onClick={this.onStop}>Stop</button>
+            :
+            <button onClick={this.onStart}>Start</button>
+          }
+          <button onClick={this.onReset}>Reset</button>
+        </div>
       </div>
     )
   }
