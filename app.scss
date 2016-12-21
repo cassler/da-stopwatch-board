@@ -1,27 +1,42 @@
 body {
-  background: #d5d5d5; 
+  background: #e5f0f9; 
   font-family: arial;
   color: #FAFAFA;
   text-transform: uppercase;
 }
 
 .scoreboard {
-  background: #333;
+  background: #2A3340;
   width: 700px;
   margin: 70px auto;
-  box-shadow: 0 4px 0px #333;
-  border-radius: 15px;
+  box-shadow: 0 2px 20px 5px #ccc;
+  border-radius: 5px;
+  -webkit-transition:all 0.45s;
+  transition:all 0.45s;
 
+  &:hover {
+    box-shadow:0 4px 25px 9px #bbb;
+    -ms-transform: translate3d(1.03); /* IE 9 */
+    -webkit-transform: translate3d(1.03, 2, 1.3); /* Safari */
+    transform: translate3d(1.03, 2, 1.3);
+  }
 }
+
+div.player {
+  -webkit-transition:all 0.45s;
+  background: #2A3340;
+  box-shadow:0 0 1px 1px rgba(#000,0.35);
+}
+
 
 .header {
   padding: 5px 10px;
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #222;
+  background-color: #012;
   border-radius: 15px 15px 0 0;
-  border-bottom: solid 2px #444;
+  border-bottom: solid 2px #456;
 }
 
 .header h1 {
@@ -45,7 +60,7 @@ body {
     text-align: right;
     font-weight: normal;
     letter-spacing: 2px;
-    color: #666;
+    color: #567;
     font-size: .7em;
   }
 
@@ -56,7 +71,7 @@ body {
 .stopwatch {
   padding: 15px 10px 5px 10px;
   margin: -5px -10px -5px 10px;
-  background: #2f2f2f;
+  background: #2f3f4f;
   border-radius: 0 15px 0 0;
 }
 
@@ -67,11 +82,11 @@ body {
 
   .stopwatch button {
     margin: 8px 5px;
-    background-color: #222;
+    background-color: #012;
     border-radius: 5px;
     padding: 7px 8px;
     border: none;
-    color: #999;
+    color: #789;
     letter-spacing: 2px;
     font-weight: bold;
     text-shadow: none;
@@ -89,13 +104,14 @@ body {
     margin: 0;
     font-weight: normal;
     letter-spacing: 2px;
-    color: #666;
+    color: #689;
   }
-
+.players {
+  background:#456
+}
 .player {
   display: flex;
   font-size: 1.2em;
-  border-bottom: solid 2px #444;
   letter-spacing: 2px;
 }
 
@@ -127,7 +143,9 @@ body {
   .counter-action {
     border: none;
     font-weight: bold;
-    color: #FAFAFA;
+    color: rgba(#FAFAFA,.75);
+    font-size:30px;
+    line-height:20px;
     display: block;
     padding: 20px 20px;
     cursor: pointer;
@@ -138,20 +156,20 @@ body {
   }
 
   .counter-action.increment {
-    background: #66BB6A;
+    background: #5FCF80;
   }
 
   .counter-action.increment:hover {
-    background: #549d59;
+    background: darken(#5FCF80,12%);
     cursor: pointer;
   }
 
   .counter-action.decrement {
-    background: #ef5350;
+    background: #C25975;
   }
 
   .counter-action.decrement:hover {
-    background: #c44442;
+    background: darken(#C25975,12%);
     cursor: pointer;
   }
 
@@ -168,7 +186,7 @@ body {
 
 .add-player-form form {
   display: flex;
-  background-color: #222;
+  background-color: #012;
   border-radius: 0 0 20px 20px
 }
 
@@ -178,22 +196,22 @@ body {
     margin: 15px 10px 15px 15px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #2A3340;
     border-style: none;
     text-shadow: none;
     text-transform: uppercase;
-    color: #999;
+    color: #789;
     letter-spacing: 2px;
     outline: none;
   }
 
   .add-player-form input[type=text]::-webkit-input-placeholder{
-    color: #666;
+    color: #567;
     letter-spacing: 2px;
   }
 
   .add-player-form input[type=text]:focus{
-    background-color: #444;
+    background-color: #456;
   }
 
   .add-player-form input[type=submit] {
@@ -201,10 +219,10 @@ body {
     font-size: .6em;
     margin: 15px 15px 15px 0; 
     padding: 10px;
-    background-color: #333;
+    background-color: #2A3340;
     border-radius: 5px;
     border: none;
-    color: #999;
+    color: #789;
     letter-spacing: 2px;
     font-weight: bold;
     text-shadow: none;

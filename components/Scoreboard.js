@@ -1,3 +1,5 @@
+import React from 'react';
+
 var PLAYERS = [
   {
     name: "Jim Hoskins",
@@ -252,6 +254,4 @@ var Application = React.createClass({
   }
 });  
 
-
-
-ReactDOM.render(<Application initialPlayers={PLAYERS}/>, document.getElementById('container'));
+export default Application;
