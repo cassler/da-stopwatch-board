@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Counter from './Counter';
 
-function Player(props) {
+// ----------------------------------------------------------
+const Player = props => {
   return (
     <div className="player">
       <div className="player-name">
@@ -9,7 +10,7 @@ function Player(props) {
         {props.name}
       </div>
       <div className="player-score">
-        <Counter score={props.score} onChange={props.onScoreChange} />
+        <Counter onChange={props.onScoreChange} score={props.score} />
       </div>
     </div>
   );
@@ -18,9 +19,8 @@ function Player(props) {
 Player.propTypes = {
   name: React.PropTypes.string.isRequired,
   score: React.PropTypes.number.isRequired,
-  onScoreChange: React.PropTypes.func.isRequired,
   onRemove: React.PropTypes.func.isRequired,
+  onScoreChange: React.PropTypes.func.isRequired,
 };
-
 
 export default Player;

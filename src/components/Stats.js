@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-function Stats(props) {
-  var totalPlayers = props.players.length;
-  var totalPoints = props.players.reduce(function(total, player){
+const Stats = props => {
+  const playerCount = props.players.length;
+  const totalPoints = props.players.reduce(function(total, player) {
     return total + player.score;
   }, 0);
-  
+
   return (
     <table className="stats">
       <tbody>
         <tr>
           <td>Players:</td>
-          <td>{totalPlayers}</td>
+          <td>{playerCount}</td>
         </tr>
         <tr>
           <td>Total Points:</td>
@@ -19,9 +19,9 @@ function Stats(props) {
         </tr>
       </tbody>
     </table>
-  )  
+  )
 }
-  
+
 Stats.propTypes = {
   players: React.PropTypes.array.isRequired,
 };
