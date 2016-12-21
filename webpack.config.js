@@ -1,8 +1,7 @@
 module.exports = {
-	entry: './app.js',
-
+	devtool: 'inline-sourcemap',
+	entry: './index.js',
 	output: {
-		// path: 'build',
 		filename: 'bundle.js'
 	},
 
@@ -13,7 +12,7 @@ module.exports = {
 			{
 				test: /\.js$/ , 
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader']
+				loaders: ['react-hot', 'babel']
 			},
 			{
 				loaders: ["style", "css", "sass"],

@@ -1,0 +1,476 @@
+html {
+  position: fixed;
+  overflow: hidden;
+  width:100vw;
+
+}
+body {
+  background: #ddd; 
+  font-family: Lato, arial;
+  color: #FAFAFA;
+  text-transform: uppercase;
+  padding:0;
+  margin:0;
+  width:100vw;
+}
+
+* {
+  box-sizing:border-box;
+}
+#root {
+  margin:0 30px;
+  width:100%;
+  max-height: 100vh;
+  @media (max-width:500px) {
+    height:100vh;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:stretch;
+    .scoreboard {
+      display:flex;
+      border-radius:0;
+      flex-grow:1;
+      flex-direction:column;
+      justify-content:space-between;
+      align-self:stretch;
+      height:100vh;
+      margin:0;
+      padding:0;
+    }
+    
+    div.add-player-form form {
+      display:flex;
+      flex-direction:column;
+      padding:15px;
+      input {
+        margin:10px !important;
+      }
+      input + input {margin-top:0 !important;}
+    }
+    .header {
+      padding-top:20px;
+      z-index:800;
+      .stats {
+        tbody {
+          flex-direction:row;
+          font-size:12px;
+        }
+      }
+      h1 {
+        margin:5px 0 0;
+        &::after {display:none;}
+
+      }
+    }
+    div.player {
+      flex-grow:0;
+      z-index:100;
+      padding:5px;
+      margin:0;
+    }
+  } 
+  @media (max-width:340px) {
+    
+  }
+}
+.scoreboard {
+  background: #2A3340;
+  max-width: 700px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  margin: 0;
+  margin-left: auto;
+  margin-right:auto;
+  box-shadow: 0 2px 20px 5px #ccc;
+  -webkit-transition:all 0.45s;
+  transition:all 0.45s;
+
+  &:hover {
+    box-shadow:0 4px 25px 9px #bbb;
+    -ms-transform: translate3d(1.03); /* IE 9 */
+    -webkit-transform: translate3d(1.03, 2, 1.3); /* Safari */
+    transform: translate3d(1.03, 2, 1.3);
+  }
+
+  @media (max-width:700px) {
+    .header {
+      flex-direction:column;
+
+      .stats,
+      .stopwatch {
+        text-align:center;
+        margin:0 0 -5px;
+        border-top-right-radius: 0;
+        width:100%;
+      }
+
+      .stopwatch {
+        // padding:15px;
+        display:flex;
+        flex-wrap:wrap;
+        width:100%;
+        justify-content:space-between;
+
+        h2 {
+          flex-grow:0;
+          text-align:right;
+          align-self:flex-end;
+        }
+
+        button {
+          align-self:flex-end;
+          flex-grow:0;
+          margin-bottom:0;
+          text-align:center;
+          letter-spacing: 0;
+        }
+
+        .stopwatch-buttons {
+          width:140px !important;
+          align-items:flex-end;
+          text-align:right;
+          h2 {
+            flex-basis:100%;
+          }
+        }
+
+        .stopwatch-time {
+          font-size:38px;
+          line-height:38px;
+          display:flex;
+          align-self:stretch;
+          order:-1;
+          flex-direction:row;
+          flex-grow:1;
+          flex-basis:50%;
+          padding:0;
+          margin:0;
+          border-radius:5px;
+          background:rgba(#000,0.2);
+          justify-content:flex-end;
+
+          div {
+            display:flex;
+            flex-grow:0;
+            padding:0 15px;
+            align-self:center;
+          }
+        }
+      }
+
+      .stats {
+        tbody, tr, td {
+          display:flex;
+          justify-content:center;
+          line-height:26px;
+        }
+        tbody {
+
+        }
+        tr, td {
+          padding:0 5px;
+        }
+      }
+      
+    }
+
+    .counter-score {
+      font-size:1em;
+      letter-spacing:-1px;
+      align-self:center;
+      padding-right:10px;
+    }
+    div.player {
+      div.player-name {
+        font-size:12px !important;
+      }
+      a.remove-player {
+        display:none;
+      }
+    }
+    
+
+
+    
+
+  }
+}
+div.header,
+.stopwatch {
+  z-index:900;
+  flex-shrink:0;
+}
+div.players {
+  background: #2A3340;
+  flex-grow:1;
+  z-index:0;
+  display:flex;
+  flex-direction:column;
+  overflow:scroll;
+  align-items:flex-start;
+}
+
+div.player {
+  -webkit-transition:all 0.45s;
+  background: #2A3340;
+  flex-shrink:0;
+  box-shadow:0 0 1px 1px rgba(#000,0.35);
+}
+
+
+.header {
+  padding: 5px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  background-color: #012;
+  
+  
+
+  
+}
+
+.header h1 {
+  flex-grow: 1;
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  line-height:2em;
+  font-weight: normal;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top:0;
+    width:50%;
+    margin-left:25%;
+    height:1px;
+    background:#357;
+    display:block;
+  }
+  &::after {
+    width:30%;
+    top:auto;
+    bottom:1px;
+    background:none;
+    margin-left:35%;
+    height:3px;
+    border-top: 1px solid darken(#357,5%);
+    border-bottom: 1px solid darken(#357,15%);
+  }
+
+
+  small {
+    font-weight:100;
+    opacity:0.8;
+    font-size:0.6em;
+    position: relative;
+    top:-2.5px;
+    display:inline-block;
+    margin:0 5px;
+  }
+}
+
+.header .stats,
+.header .stopwatch {
+  width: 170px;
+}
+
+.stats {
+  margin-top: 0;
+  font-weight: normal;
+}
+
+  .stats td:first-child {
+    text-align: right;
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: #567;
+    font-size: .7em;
+  }
+
+  .stats td:last-child {
+    text-align: left;
+  }
+
+.stopwatch {
+  padding: 15px;
+  margin: -5px 0 -5px 10px;
+  background: #2f3f4f;
+}
+
+  .stopwatch-time {
+    font-family: monospace;
+    font-size: 2em;
+    
+  }
+
+  .stopwatch button {
+    margin: 8px 0;
+    background-color: #012;
+    border-radius: 5px;
+    padding: 7px 8px;
+    border: none;
+    color: #789;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: none;
+    text-transform: uppercase;
+
+    & + button {
+      margin-left:10px;
+    }
+  }
+
+  .stopwatch button:hover {
+    background: #4b71b5;
+    color: #fafafa;
+    cursor: pointer;
+  }
+
+  .stopwatch h2 {
+    font-size: .6em;
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: #689;
+  }
+.players {
+  background:#456
+}
+.player {
+  display: flex;
+  justify-content:space-between;
+  width:100%;
+  padding:4px 12px;
+  font-size: 1.2em;
+  align-items:center;
+  letter-spacing: 2px;
+}
+
+  .remove-player {
+    visibility: hidden;
+    margin-right: 10px;
+    color: #e57373;
+    cursor: pointer;
+  }
+
+  .player-name:hover .remove-player {
+    visibility: visible;
+  }
+
+  .player-name {
+    flex-grow: 1;
+    padding: 10px;
+  }
+
+  .player-score {
+    width: 150px;
+  }
+
+  .counter {
+    display: flex;
+    flex-shrink:0;
+  }
+
+  .counter-action {
+    border: none;
+    font-weight: bold;
+    color: rgba(#FAFAFA,.75);
+    font-size:20px;
+    line-height:25px;
+    display: block;
+    padding: 0 5px;
+    width:25px;
+    height:25px;
+    margin:10px 10px 10px 0;
+    border-radius:40px;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .counter-action.increment {
+    background: #5FCF80;
+  }
+
+  .counter-action.increment:hover {
+    background: darken(#5FCF80,12%);
+    cursor: pointer;
+  }
+
+  .counter-action.decrement {
+    background: #C25975;
+  }
+
+  .counter-action.decrement:hover {
+    background: darken(#C25975,12%);
+    cursor: pointer;
+  }
+
+  .counter-score {
+    flex-grow: 1;
+    color: #FAFAFA;
+    text-align: right;
+    align-self:center;
+    font-family: monospace;
+    padding: 5px 5px 9px;
+    font-size: 1.5em;
+  }
+
+
+.add-player-form form {
+  display: flex;
+  background-color: #012;
+}
+
+  .add-player-form input[type=text] {
+    flex-grow: 1;
+    border-width: 0 0 1px 0;
+    margin: 15px 10px 15px 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2A3340;
+    border-style: none;
+    text-shadow: none;
+    text-transform: uppercase;
+    color: #789;
+    letter-spacing: 2px;
+    outline: none;
+  }
+
+  .add-player-form input[type=text]::-webkit-input-placeholder{
+    color: #567;
+    letter-spacing: 2px;
+  }
+
+  .add-player-form input[type=text]:focus{
+    background-color: #456;
+  }
+
+  .add-player-form input[type=submit] {
+    display: block;
+    font-size: .6em;
+    margin: 15px 15px 15px 0; 
+    padding: 10px;
+    background-color: #2A3340;
+    border-radius: 5px;
+    border: none;
+    color: #789;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: none;
+    text-transform: uppercase;
+  }
+
+  .add-player-form input[type=submit]:hover{
+    background: #4b71b5;
+    color: #fafafa;
+    cursor: pointer;
+  }
