@@ -6,28 +6,61 @@ body {
   padding:0;
   margin:0;
 }
+
+* {
+  box-sizing:border-box;
+}
 #root {
   margin:30px;
   @media (max-width:500px) {
-    margin:15px;
+    height:100vh;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:stretch;
+    .scoreboard {
+      display:flex;
+      border-radius:0;
+      flex-grow:1;
+      flex-direction:column;
+      justify-content:space-between;
+      align-self:stretch;
+      height:100%;
+      margin:0;
+      padding:0;
+    }
+    
     div.add-player-form form {
       display:flex;
       flex-direction:column;
+      padding:15px;
       input {
         margin:10px !important;
       }
       input + input {margin-top:0 !important;}
     }
     .header {
+      padding-top:15px;
       .stats {
         tbody {
-          flex-direction:column;
+          flex-direction:row;
+          font-size:12px;
         }
       }
     }
+    div.players {
+      flex-direction:column;
+      flex-grow:1;
+    }
+    div.player {
+      flex-grow:0;
+      align-self:flex-start;
+      padding:5px;
+      margin:0;
+    }
   } 
   @media (max-width:340px) {
-    margin:5px;
+    
   }
 }
 .scoreboard {
@@ -35,7 +68,6 @@ body {
   max-width: 700px;
   margin: auto;
   box-shadow: 0 2px 20px 5px #ccc;
-  border-radius: 5px;
   -webkit-transition:all 0.45s;
   transition:all 0.45s;
 
@@ -58,11 +90,22 @@ body {
         width:100%;
       }
 
+      .stopwatch {
+        padding:15px 15px 5px;
+
+        .stopwatch-time {
+          font-size:3em;
+        }
+      }
+
       .stats {
         tbody, tr, td {
           display:flex;
           justify-content:center;
           line-height:26px;
+        }
+        tbody {
+
         }
         tr, td {
           padding:0 5px;
@@ -93,6 +136,11 @@ body {
   }
 }
 
+div.players {
+  background: #2A3340;
+  overflow:scroll;
+}
+
 div.player {
   -webkit-transition:all 0.45s;
   background: #2A3340;
@@ -101,13 +149,13 @@ div.player {
 
 
 .header {
-  padding: 5px 10px;
+  padding: 5px 0;
   text-align: center;
   display: flex;
   align-items: center;
   background-color: #012;
-  border-radius: 15px 15px 0 0;
-  border-bottom: solid 2px #456;
+  
+  
 
   
 }
@@ -178,9 +226,8 @@ div.player {
 
 .stopwatch {
   padding: 15px 10px 5px 10px;
-  margin: -5px -10px -5px 10px;
+  margin: -5px 0 -5px 10px;
   background: #2f3f4f;
-  border-radius: 0 15px 0 0;
 }
 
   .stopwatch-time {
@@ -221,6 +268,7 @@ div.player {
   display: flex;
   justify-content:space-between;
   width:100%;
+  padding:4px 12px;
   font-size: 1.2em;
   align-items:center;
   letter-spacing: 2px;
@@ -303,7 +351,6 @@ div.player {
 .add-player-form form {
   display: flex;
   background-color: #012;
-  border-radius: 0 0 20px 20px
 }
 
   .add-player-form input[type=text] {
