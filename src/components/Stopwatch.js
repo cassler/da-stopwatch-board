@@ -53,8 +53,6 @@ export default class Stopwatch extends Component {
     return (
       <div className="stopwatch" >
       <div className="stopwatch-time"><div>{seconds}</div></div>
-        
-        
         <div className="stopwatch-buttons">
           <h2>Stopwatch</h2>
           { this.state.running ?
