@@ -1,10 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
-// style
-import './src/styles/app.scss';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import PlayerReducer from './src/reducers/player';
 import Scoreboard from './src/containers/Scoreboard';
 
+import './src/styles/app.scss';
+
+// Introduce reducer to redux workflow
+const store = createStore(
+	PlayerReducer
+);
+
 render(
-  <Scoreboard />,
-  document.getElementById('root')
+	<Provider store={store}>
+		<Scoreboard />
+	</Provider>,
+	document.getElementById('root')
 );
