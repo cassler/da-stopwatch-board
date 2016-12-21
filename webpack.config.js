@@ -14,7 +14,12 @@ module.exports = {
 				test: /\.js$/ , 
 				exclude: /node_modules/,
 				loader: 'babel-loader'
+			},
+			{
+				loaders: ["style", "css", "sass"],
+				test: /\.scss$/
 			}
 		]
+		// live reloading
 	}
 };
