@@ -6,6 +6,7 @@
   "scripts": {
     "prestart": "npm run lint",
     "start": "webpack-dev-server --progress --inline --hot",
+    "build": "webpack --progress --optimize-minimize",
     "lint": "eslint ./src/**/*.{js, jsx} --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
